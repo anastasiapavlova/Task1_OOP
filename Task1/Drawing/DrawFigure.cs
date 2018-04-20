@@ -11,7 +11,7 @@ using Task1.Models;
 
 namespace Task1.Drawing
 {
-    class DrawFigure :IVisitor
+    internal class DrawFigure :IVisitor
     {
         public PaintEventArgs evnt { get; set; }
         public DrawFigure(PaintEventArgs e)
@@ -22,35 +22,35 @@ namespace Task1.Drawing
         {
             Graphics l = evnt.Graphics;
             Pen p = new Pen(Color.DodgerBlue, 4);
-            l.DrawEllipse(p, figure.x, figure.y, figure.width, figure.height);
+            l.DrawEllipse(p, figure.X, figure.Y, figure.Width, figure.Height);
         }
 
         public void VisitRectangle(Models.Rectangle figure)
         {
             Graphics l = evnt.Graphics;
             Pen p = new Pen(Color.Indigo, 4);
-            l.DrawRectangle(p, figure.x, figure.y, figure.width, figure.height);
+            l.DrawRectangle(p, figure.X, figure.Y, figure.Width, figure.Height);
         }
 
         public void VisitSquare(Square figure)
         {
             Graphics l = evnt.Graphics;
             Pen p = new Pen(Color.Goldenrod, 4);
-            l.DrawRectangle(p, figure.x, figure.y, figure.width, figure.height);
+            l.DrawRectangle(p, figure.X, figure.Y, figure.Width, figure.Height);
         }
 
         public void VisitLineSegment(LineSegment figure)
         {
             Graphics l = evnt.Graphics;
             Pen p = new Pen(Color.IndianRed, 4);
-            l.DrawLine(p, figure.x1, figure.y1, figure.x2, figure.y2);
+            l.DrawLine(p, figure.X1, figure.Y1, figure.X2, figure.Y2);
         }
 
         public void VisitEllipse(Ellipse figure)
         {
             Graphics l = evnt.Graphics;
             Pen p = new Pen(Color.DarkRed, 4);
-            l.DrawEllipse(p, figure.x, figure.y, figure.width, figure.height);
+            l.DrawEllipse(p, figure.X, figure.Y, figure.Width, figure.Height);
         }
 
         public void VisitRhomb(Rhomb figure)
@@ -60,11 +60,11 @@ namespace Task1.Drawing
             {
                 myPath.AddLines(new[]
                 {
-                    new Point(figure.x, figure.y + (figure.height / 2)),
-                    new Point(figure.x + (figure.width / 2), figure.y),
-                    new Point(figure.x + figure.width, figure.y + (figure.height / 2)),
-                    new Point(figure.x + (figure.width / 2), figure.y + figure.height),
-                    new Point(figure.x, figure.y + (figure.height / 2))
+                    new Point(figure.X, figure.Y + (figure.Height / 2)),
+                    new Point(figure.X + (figure.Width / 2), figure.Y),
+                    new Point(figure.X + figure.Width, figure.Y + (figure.Height / 2)),
+                    new Point(figure.X + (figure.Width / 2), figure.Y + figure.Height),
+                    new Point(figure.X, figure.Y + (figure.Height / 2))
                 });
                 using (Pen pen = new Pen(Color.Black, 4))
                     l.DrawPath(pen, myPath);
