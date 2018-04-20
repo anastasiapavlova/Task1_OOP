@@ -1,0 +1,39 @@
+﻿1. BLL не должен быть связан с PL - ом.
+   PL - figureCollection and extendableFigureCollection, и FigureDrawer
+   BLL (class library) - все остальное
+
++ 2. посмотри https://msdn.microsoft.com/en-us/library/xzf533w0(v=vs.71).aspx 
+   первое что бросается в глаза названия свойств с малекой буквы)
+   
++ 3. использую и указывай модификаторы доступа для классов и методов 
+
+4. добавляй проверки на Null 
+   например параметр visitor тут 
+           public void Accept(IVisitor visitor)
+        {
+            visitor.VisitEllipse(this);
+        }
+5. убирай ненужные using 
+
+6. обнови иерархию классов
+   public class Circle : BaseDrawableFigure (override Accept)
+   public abstract class BaseDrawableFigure : BaseFigure, IDrawableFigure
+   public abstract class BaseFigure : IFigure  (Accept)
+   добавить к классам фигур констуктор, используя baseконстуктор  
+   
+7. попробуй использовать IEnumerable интерфейс и GetEnumerator() для классов коллекций
+   
+8. по итогу дожно быть (FigureVisitor должен менять поведение)
+
+            IEnumerable<IDrawableFigure> figureCollection = new StaticDrawableFigureCollection();
+            var figureDrawer = new FigureDrawer();
+
+            //Drawing collection of figures
+            figureDrawer.DrawFigures(figureCollection);
+
+            //Drawing extendable figures
+            figureCollection = new StaticExtendableFigureCollection();
+            figureDrawer.DrawFigures(figureCollection);
+
+
+
