@@ -2,16 +2,13 @@
 
 namespace Task1.Models
 {
-    class Square : IFigure
+    public class Square : BaseFigure
     {
-        public float X { get; set; }
-        public float Y { get; set; }
-        public float Width { get; set; }
-        public float Height { get; set; }
+        public Square(float x, float y, float width, float height) : base(x, y, width, height) { }
 
-        public void Accept(IVisitor visitor)
+        public override void Accept(IVisitor visitor)
         {
-            visitor.VisitSquare(this);
+            visitor.Visit(this);
         }
     }
 }

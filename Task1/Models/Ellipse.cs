@@ -2,17 +2,13 @@
 
 namespace Task1.Models
 {
-    class Ellipse : IFigure
+    public class Ellipse : BaseFigure
     {
-        public float X { get; set; }
-        public float Y { get; set; }
-        public float Width { get; set; }
+        public Ellipse(float x, float y, float width, float height) : base(x, y, width, height) { }
 
-        public float Height { get; set; }
-
-        public void Accept(IVisitor visitor)
+        public override void Accept(IVisitor visitor)
         {
-            visitor.VisitEllipse(this);
+            visitor.Visit(this);
         }
     }
 }

@@ -1,22 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Task1.Interfaces;
+﻿using Task1.Interfaces;
 
 namespace Task1.Models
 {
-    class Rhomb : IFigure
+    public class Rhomb : BaseFigure
     {
-        public int X { get; set; }
-        public int Y { get; set; }
-        public int Width { get; set; }
+        public Rhomb(float x, float y, float width, float height) : base(x, y, width, height) { }
 
-        public int Height { get; set; }
-
-        public void Accept(IVisitor visitor)
+        public override void Accept(IVisitor visitor)
         {
-            visitor.VisitRhomb(this);
+            visitor.Visit(this);
         }
     }
 }

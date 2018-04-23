@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Task1.Drawing;
-using Task1.Models;
+﻿using System.Windows.Forms;
 
 namespace Task1
 {

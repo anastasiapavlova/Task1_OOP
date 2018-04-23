@@ -2,17 +2,13 @@
 
 namespace Task1.Models
 {
-    class Rectangle : IFigure
+    public class Rectangle : BaseFigure
     {
-        public float X { get; set; }
-        public float Y { get; set; }
-        public float Width { get; set; }
+        public Rectangle(float x, float y, float width, float height) : base(x, y, width, height) { }
 
-        public float Height { get; set; }
-
-        public void Accept(IVisitor visitor)
+        public override void Accept(IVisitor visitor)
         {
-            visitor.VisitRectangle(this);
+            visitor.Visit(this);
         }
     }
 }
