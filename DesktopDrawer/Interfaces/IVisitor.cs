@@ -1,6 +1,6 @@
-﻿using Task1.Models;
+﻿using BusinessLogic.Models;
 
-namespace Task1.Interfaces
+namespace BusinessLogic.Interfaces
 {
     public interface IVisitor
     {

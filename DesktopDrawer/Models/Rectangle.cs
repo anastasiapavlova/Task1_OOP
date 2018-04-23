@@ -1,6 +1,6 @@
-﻿using Task1.Interfaces;
+﻿using BusinessLogic.Interfaces;
 
-namespace Task1.Models
+namespace BusinessLogic.Models
 {
     public class Rectangle : BaseFigure
     {
@@ -8,7 +8,7 @@ namespace Task1.Models
 
         public override void Accept(IVisitor visitor)
         {
-            visitor.Visit(this);
+            visitor?.Visit(this);
         }
     }
 }

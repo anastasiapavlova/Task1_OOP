@@ -1,6 +1,6 @@
-﻿using Task1.Interfaces;
+﻿using BusinessLogic.Interfaces;
 
-namespace Task1.Models
+namespace BusinessLogic.Models
 {
     public class LineSegment : IFigure
     {

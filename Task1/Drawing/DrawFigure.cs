@@ -2,50 +2,43 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using Task1.Interfaces;
-using Task1.Models;
+using BusinessLogic.Interfaces;
+using BusinessLogic.Models;
 
-namespace Task1.Drawing
+namespace DesktopDrawer.Drawing
 {
     internal class DrawFigure : IVisitor
     {
-        private PaintEventArgs _event { get; set; }
+        private PaintEventArgs Event { get; set; }
         public DrawFigure(PaintEventArgs e)
         {
-            _event = e;
+            Event = e;
         }
 
         public void Visit(Circle figure)
         {
-            Graphics l = _event.Graphics;
+            Graphics l = Event.Graphics;
             Pen p = new Pen(Color.DodgerBlue, 4);
             l.DrawEllipse(p, figure.X, figure.Y, figure.Width, figure.Height);
         }
 
-        public void Visit(Models.Rectangle figure)
-        {
-            Graphics l = _event.Graphics;
-            Pen p = new Pen(Color.Indigo, 4);
-            l.DrawRectangle(p, figure.X, figure.Y, figure.Width, figure.Height);
-        }
-
         public void Visit(Square figure)
         {
-            Graphics l = _event.Graphics;
+            Graphics l = Event.Graphics;
             Pen p = new Pen(Color.Goldenrod, 4);
             l.DrawRectangle(p, figure.X, figure.Y, figure.Width, figure.Height);
         }
 
         public void Visit(Ellipse figure)
         {
-            Graphics l = _event.Graphics;
+            Graphics l = Event.Graphics;
             Pen p = new Pen(Color.DarkRed, 4);
             l.DrawEllipse(p, figure.X, figure.Y, figure.Width, figure.Height);
         }
 
         public void Visit(Rhomb figure)
         {
-            Graphics l = _event.Graphics;
+            Graphics l = Event.Graphics;
             using (GraphicsPath myPath = new GraphicsPath())
             {
                 myPath.AddLines(new[]
@@ -63,7 +56,7 @@ namespace Task1.Drawing
 
         public void Visit(LineSegment figure)
         {
-            Graphics l = _event.Graphics;
+            Graphics l = Event.Graphics;
             Pen p = new Pen(Color.IndianRed, 4);
             l.DrawLine(p, figure.X1, figure.Y1, figure.X2, figure.Y2);
         }
@@ -72,8 +65,15 @@ namespace Task1.Drawing
         {
             foreach (IFigure figure in figures)
             {
-                figure.Accept(this);
+                figure?.Accept(this);
             }
+        }
+
+        public void Visit(BusinessLogic.Models.Rectangle figure)
+        {
+            Graphics l = Event.Graphics;
+            Pen p = new Pen(Color.Indigo, 4);
+            l.DrawRectangle(p, figure.X, figure.Y, figure.Width, figure.Height);
         }
     }
 }

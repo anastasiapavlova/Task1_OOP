@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Task1
+namespace DesktopDrawer
 {
     static class Program
     {

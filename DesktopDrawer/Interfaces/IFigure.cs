@@ -1,4 +1,4 @@
-﻿namespace Task1.Interfaces
+﻿namespace BusinessLogic.Interfaces
 {
     public interface IFigure
     {

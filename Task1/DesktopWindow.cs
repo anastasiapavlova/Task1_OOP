@@ -1,8 +1,9 @@
 ﻿using System.Windows.Forms;
-using Task1.Drawing;
-using Task1.Models;
+using BusinessLogic.Models;
+using DesktopDrawer.Drawing;
+using DesktopDrawer.Models;
 
-namespace Task1
+namespace DesktopDrawer
 {
     public partial class Figures : MetroFramework.Forms.MetroForm
     {

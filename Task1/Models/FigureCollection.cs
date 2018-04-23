@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Task1.Interfaces;
+using BusinessLogic.Interfaces;
 
-namespace Task1.Models
+namespace DesktopDrawer.Models
 {
     public class FigureCollection : IEnumerable<IFigure>
     {
-        private List<IFigure> _figures = new List<IFigure>();
+        private readonly List<IFigure> _figures = new List<IFigure>();
 
         public void Add(IFigure figure)
         {

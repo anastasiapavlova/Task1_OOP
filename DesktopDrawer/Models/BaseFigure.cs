@@ -1,10 +1,10 @@
-﻿using Task1.Interfaces;
+﻿using BusinessLogic.Interfaces;
 
-namespace Task1.Models
+namespace BusinessLogic.Models
 {
     public abstract class BaseFigure : IFigure
     {
-        public BaseFigure(float x, float y, float width, float height)
+        protected BaseFigure(float x, float y, float width, float height)
         {
             X = x;
             Y = y;
