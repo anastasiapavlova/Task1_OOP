@@ -1,44 +1,36 @@
-﻿using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms;
-using BusinessLogic.Interfaces;
 using BusinessLogic.Models;
 
 namespace DesktopDrawer.Drawing
 {
-    internal class DrawFigure : IVisitor
+    public static class FigureDrawer
     {
-        private PaintEventArgs Event { get; set; }
-        public DrawFigure(PaintEventArgs e)
+        public static void DrawCircle(Circle figure, PaintEventArgs e)
         {
-            Event = e;
-        }
-
-        public void Visit(Circle figure)
-        {
-            Graphics l = Event.Graphics;
+            Graphics l = e.Graphics;
             Pen p = new Pen(Color.DodgerBlue, 4);
             l.DrawEllipse(p, figure.X, figure.Y, figure.Width, figure.Height);
         }
 
-        public void Visit(Square figure)
+        public static void DrawSquare(Square figure, PaintEventArgs e)
         {
-            Graphics l = Event.Graphics;
+            Graphics l = e.Graphics;
             Pen p = new Pen(Color.Goldenrod, 4);
             l.DrawRectangle(p, figure.X, figure.Y, figure.Width, figure.Height);
         }
 
-        public void Visit(Ellipse figure)
+        public static void DrawEllipse(Ellipse figure, PaintEventArgs e)
         {
-            Graphics l = Event.Graphics;
+            Graphics l = e.Graphics;
             Pen p = new Pen(Color.DarkRed, 4);
             l.DrawEllipse(p, figure.X, figure.Y, figure.Width, figure.Height);
         }
 
-        public void Visit(Rhomb figure)
+        public static void DrawRhomb(Rhomb figure, PaintEventArgs e)
         {
-            Graphics l = Event.Graphics;
+            Graphics l = e.Graphics;
             using (GraphicsPath myPath = new GraphicsPath())
             {
                 myPath.AddLines(new[]
@@ -54,26 +46,20 @@ namespace DesktopDrawer.Drawing
             }
         }
 
-        public void Visit(LineSegment figure)
+        public static void DrawLineSegment(LineSegment figure, PaintEventArgs e)
         {
-            Graphics l = Event.Graphics;
+            Graphics l = e.Graphics;
             Pen p = new Pen(Color.IndianRed, 4);
             l.DrawLine(p, figure.X1, figure.Y1, figure.X2, figure.Y2);
         }
 
-        public void DrawFigures(IEnumerable<IFigure> figures)
+        public static void DrawRectangle(BusinessLogic.Models.Rectangle figure, PaintEventArgs e)
         {
-            foreach (IFigure figure in figures)
-            {
-                figure?.Accept(this);
-            }
-        }
-
-        public void Visit(BusinessLogic.Models.Rectangle figure)
-        {
-            Graphics l = Event.Graphics;
+            Graphics l = e.Graphics;
             Pen p = new Pen(Color.Indigo, 4);
             l.DrawRectangle(p, figure.X, figure.Y, figure.Width, figure.Height);
         }
+
+        
     }
 }

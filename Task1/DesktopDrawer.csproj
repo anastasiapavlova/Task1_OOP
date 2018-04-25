@@ -75,13 +75,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Drawing\DrawFigure.cs" />
+    <Compile Include="Drawing\FigureDrawer.cs" />
     <Compile Include="DesktopWindow.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DesktopWindow.Designer.cs">
       <DependentUpon>DesktopWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="Drawing\FigureVisitor.cs" />
     <Compile Include="Models\FigureCollection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

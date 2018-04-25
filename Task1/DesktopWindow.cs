@@ -24,8 +24,8 @@ namespace DesktopDrawer
                 new Rhomb (550, 300, 200, 200)
             };
 
-            var drawFigures = new DrawFigure(e);
-            drawFigures.DrawFigures(figureList);
+            var figureDrawer = new FigureVisitor(e);
+            figureDrawer.FiguresVisitor(figureList);
         }
     }
 }
